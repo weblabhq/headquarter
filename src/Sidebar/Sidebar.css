@@ -1,0 +1,84 @@
+.Sidebar {
+  width: 48px;
+  height: 100%;
+  background-color: pink;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  z-index: 200;
+  background: transparent;
+  box-shadow: 0 0 16px -8px inset;
+}
+
+.Sidebar-nav {
+  padding: 58px 0 0 0;
+  margin: 0;
+}
+
+.Sidebar-nav li {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  padding-right: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+  border: 0;
+  text-align: center;
+}
+
+.Sidebar-nav li a {
+  color: #9ea3b2;
+  display: block;
+}
+
+.Sidebar-nav li a:hover {
+  color: #24262d;
+}
+
+.Sidebar-nav li.active {
+  border-right: 2px solid #2196f3
+}
+
+.Sidebar-nav li.active a {
+  color: #24262d;
+}
+
+.Sidebar-tooltip {
+  display: block;
+  position: fixed;
+  top: -48px;
+  left: 58px;
+  background-color: #0c7cd5;
+  color: #fff;
+  min-width: 50px;
+  min-height: 36px;
+  padding: 0 10px;
+  line-height: 36px;
+  z-index: 400;
+  font-size: 0.8rem;
+  font-weight: 300;
+  border-radius: 2px;
+  transition: opacity .4s ease,left .4s ease;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 4px 10px -6px #000
+}
+
+.Sidebar-tooltip:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  width: 0;
+  height: 0;
+  margin-top: -6px;
+  margin-left: -4px;
+  border: 5px solid transparent;
+  border-right-color: #0c7cd5;
+}
+
+.Sidebar-tooltip.show {
+  opacity: 1;
+}
