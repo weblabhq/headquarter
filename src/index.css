@@ -1,7 +1,102 @@
+*, :after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   font-size: 14px;
   line-height: 1.42857143;
+  background-color: #FBFCFE;
+}
+
+table,
+tbody {
+  display: table;
+  width: 100%;
+}
+
+.widget {
+  padding: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: #FFF;
+  border: 1px solid #f9f9f9;
+  height: 230px;
+}
+
+.w-1 {
+  width: 8.33%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-2 {
+  width: 16.66%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-3 {
+  width: 25.0%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-4 {
+  width: 33.33%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-5 {
+  width: 41.66%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-6 {
+  width: 50.0%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-7 {
+  width: 58.33%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-8 {
+  width: 66.66%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-9 {
+  width: 75.0%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-10 {
+  width: 83.33%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-11 {
+  width: 91.66%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.w-12 {
+  width: 100%;
+  vertical-align: top;
+  display: inline-block;
 }
