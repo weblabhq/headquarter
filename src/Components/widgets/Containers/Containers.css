@@ -1,0 +1,110 @@
+.Containers .body {
+  position: relative;
+}
+
+.Containers .container {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f9f9f9;
+  margin-bottom: 5px;
+}
+
+.Containers .scrollable {
+  overflow-y: scroll;
+  margin-top: 10px;
+  height: 90%;
+  margin-bottom: 10px;
+  padding-right: 15px;
+}
+
+.Containers .container .right {
+  text-align: right;
+}
+
+.Containers .container .center {
+  vertical-align: middle;
+  padding-top: 10px;
+  position: relative;
+}
+
+.Containers .container:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.Containers .dimmed {
+  color: #bababa;
+  font-size: 0.7rem;
+}
+
+.Containers .bar {
+  background-color: #222;
+  height: 4px;
+  width: 100%;
+  margin-bottom: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+.Containers .bar.blue {
+  background: -moz-linear-gradient(left, #2196f3 0%, #2196f3 50%, #e91e63 100%);
+  background: -webkit-linear-gradient(left, #2196f3 0%, #2196f3 50%, #e91e63 100%);
+  background: linear-gradient(to right, #2196f3 0%, #2196f3 50%, #e91e63 100%);
+}
+
+.Containers .bar.orange {
+  background: -moz-linear-gradient(left, #F46067 0%, #F46067 50%, #e91e63 100%);
+  background: -webkit-linear-gradient(left, #F46067 0%, #F46067 50%, #e91e63 100%);
+  background: linear-gradient(to right, #F46067 0%, #F46067 50%, #e91e63 100%);
+}
+
+.Containers .bar.dark-blue {
+  background: -moz-linear-gradient(left, #3F51B5 0%, #3F51B5 50%, #e91e63 100%);
+  background: -webkit-linear-gradient(left, #3F51B5 0%, #3F51B5 50%, #e91e63 100%);
+  background: linear-gradient(to right, #3F51B5 0%, #3F51B5 50%, #e91e63 100%);
+}
+
+.Containers .bar .fill {
+  height: 4px;
+  background-color: #efefef;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  transition: width .3s linear;
+}
+
+.Containers-tooltip {
+  display: block;
+  position: fixed;
+  background-color: #0c7cd5;
+  color: #fff;
+  min-width: 50px;
+  min-height: 36px;
+  padding: 0 10px;
+  line-height: 36px;
+  z-index: 400;
+  font-size: 0.8rem;
+  font-weight: 300;
+  border-radius: 2px;
+  transition: opacity .4s ease;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 4px 10px -6px #000;
+}
+
+.Containers-tooltip:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-top: 4px;
+  margin-left: -4px;
+  border: 5px solid transparent;
+  border-top-color: #0c7cd5;
+}
+
+.Containers-tooltip.show {
+  opacity: 1;
+}

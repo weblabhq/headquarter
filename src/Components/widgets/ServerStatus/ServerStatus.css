@@ -1,0 +1,63 @@
+.ServerStatus {
+  text-align: center;
+}
+
+.ServerStatus.widget > h1 {
+  width: 100%;
+}
+
+.ServerStatus .body {
+  position: relative;
+}
+
+.ServerStatus-label {
+  width: 110px;
+  text-align: center;
+}
+
+.ServerStatus-value {
+  position: absolute;
+  top: 40%;
+  font-weight: bold;
+  text-align: center;
+  margin-left: -10px;
+}
+
+.ServerStatus .legend {
+  bottom: -10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.ServerStatus .chart {
+  padding-top: 10px;
+}
+
+.ServerStatus .legend li {
+  margin: 0 10px 0 0;
+  padding: 0;
+  display: inline-block;
+  text-indent: 10px;
+}
+
+.ServerStatus .legend li::before {
+  content: " ";
+  position: absolute;
+  top: 5px;
+  background-color: #222;
+  width: 10px;
+  height: 10px;
+  background-color: #efefef;
+  border-radius: 4px;
+}
+
+.ServerStatus .legend li.active::before {
+  background-color: #2196f3;
+}
+
+.ServerStatus .legend li span {
+  padding-left: 15px;
+}

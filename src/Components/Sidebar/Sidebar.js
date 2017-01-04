@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import './Sidebar.css';
 
 class Sidebar extends Component {
-  componentDidMount () {
-    this.dd = 1;
-  }
-
   _showTooltip = (event, text) => {
     const el = this.refs.tooltip
     el.innerHTML = text

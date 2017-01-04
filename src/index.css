@@ -11,7 +11,8 @@ body {
   font-weight: 300;
   font-size: 14px;
   line-height: 1.42857143;
-  background-color: #FBFCFE;
+  /*background-color: #FBFCFE;*/
+  background: #F7F9FC;
 }
 
 table,
@@ -27,6 +28,43 @@ tbody {
   background-color: #FFF;
   border: 1px solid #f9f9f9;
   height: 230px;
+}
+
+.widget > h1 {
+  font-size: 0.8rem;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  width: 70%;
+}
+
+.widget > .toolbar {
+  float: right;
+  opacity: 0;
+  transition: opacity .2s linear;
+  font-size: 0.7rem;
+}
+
+.widget:hover > .toolbar {
+  opacity: 1;
+}
+
+.widget > .toolbar a {
+  color: #ccc;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  z-index: 2;
+  margin-left: 10px;
+}
+
+.widget > .toolbar a:hover {
+  color: #222;
+}
+
+.widget > .body {
+  padding-top: 5px;
 }
 
 .w-1 {
@@ -99,4 +137,21 @@ tbody {
   width: 100%;
   vertical-align: top;
   display: inline-block;
+}
+
+@media (max-device-width: 768px) {
+  .w-1,
+  .w-2,
+  .w-3,
+  .w-4,
+  .w-5,
+  .w-6,
+  .w-7,
+  .w-8,
+  .w-9,
+  .w-10,
+  .w-11,
+  .w-12 {
+    width: 100%;
+  }
 }

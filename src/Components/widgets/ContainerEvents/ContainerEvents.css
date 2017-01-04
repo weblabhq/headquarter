@@ -1,0 +1,16 @@
+.ContainersEvents {
+}
+
+.ContainerEvents .scrollable {
+  overflow: auto;
+  height: 170px;
+}
+
+.ContainerEvents table thead {
+  text-align: left;
+  font-size: 0.8rem;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}

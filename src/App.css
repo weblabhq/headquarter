@@ -1,9 +1,9 @@
 .App {
-  text-align: center;
 }
 
 .App-content {
   margin-left: 48px;
   margin-top: 48px;
-  position: relative;;
+  padding: 5px;
+  color: #666;
 }

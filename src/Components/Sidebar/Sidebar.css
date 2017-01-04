@@ -8,8 +8,7 @@
   overflow-x: auto;
   overflow-y: visible;
   z-index: 200;
-  background: transparent;
-  box-shadow: 0 0 16px -8px inset;
+  background: #FFF;
 }
 
 .Sidebar-nav {
