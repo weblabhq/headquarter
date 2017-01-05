@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import Sidebar from '../Components/Sidebar/Sidebar'
 import Navbar from '../Components/Navbar/Navbar'
+import MainError from '../Components/Errors/MainError'
 import ServerStatus from '../Components/widgets/ServerStatus/ServerStatus'
 import RealtimeLogs from '../Components/widgets/RealtimeLogs/RealtimeLogs'
 import Containers from '../Components/widgets/Containers/Containers'
@@ -11,6 +13,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="Dashboard">
+        <MainError />
+
         <Navbar />
 
         <Sidebar />
@@ -37,4 +41,12 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const mapStateToProps = (state, props) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Dashboard)

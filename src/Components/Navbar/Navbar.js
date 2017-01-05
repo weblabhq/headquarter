@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import './Navbar.css';
 
@@ -21,11 +22,20 @@ class Sidebar extends Component {
 
           <li>
             <i className="fa fa-user-circle-o"></i>
+            <span>{this.props.username}</span>
           </li>
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default Sidebar;
+const mapStateToProps = (state, props) => {
+  return {
+    username: state.user.username
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Sidebar)

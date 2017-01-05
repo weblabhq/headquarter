@@ -1,41 +1,34 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react'
+import { Provider } from 'react-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
+import { browserHistory, Router, Route } from 'react-router'
 
-import Sidebar from './Components/Sidebar/Sidebar';
-import Navbar from './Components/Navbar/Navbar';
-import ServerStatus from './Components/widgets/ServerStatus/ServerStatus';
-import RealtimeLogs from './Components/widgets/RealtimeLogs/RealtimeLogs';
-import Containers from './Components/widgets/Containers/Containers';
-import ContainerEvents from './Components/widgets/ContainerEvents/ContainerEvents';
+// Styles
+import './App.css'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Navbar />
+import store from './store'
+import auth from './lib/auth'
+import middlewares from './lib/middlewares'
 
-        <Sidebar />
+// Pages
+import Dashboard from './Pages/Dashboard'
+import NotFound from './Pages/NotFound'
+import Login from './Pages/Login'
+import Logout from './Pages/Logout'
 
-        <div className="App-content">
-          <div className="w-9">
-            <Containers />
-          </div>
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(browserHistory, store)
 
-          <div className="w-3">
-            <ServerStatus size={130} />
-          </div>
-
-          <div className="w-6">
-            <ContainerEvents />
-          </div>
-
-          <div className="w-6">
-            <RealtimeLogs />
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+// App routes
+const App = () => (
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path='/login' component={Login} onEnter={middlewares.redirectHomeIfLoggedIn} />
+      <Route path='/logout' component={Logout} onEnter={middlewares.requireAuth} />
+      <Route path='/' component={Dashboard} onEnter={middlewares.requireAuth} />
+      <Route path='*' component={NotFound} />
+    </Router>
+  </Provider>
+)
 
 export default App;

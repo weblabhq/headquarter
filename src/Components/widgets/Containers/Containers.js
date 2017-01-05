@@ -30,6 +30,8 @@ class Containers extends Component {
 
         containers.forEach((c) => {
           RestAPI.containers.stats(c.Id.slice(0, 12)).then(s => {
+            console.log(s)
+
             const stat = {
               cpu: utils.cpuUsage(s),
               mem: (utils.memUsage(s) / utils.memLimit(s)) || 0.0,

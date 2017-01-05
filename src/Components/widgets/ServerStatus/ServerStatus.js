@@ -20,7 +20,7 @@ class ServerStatus extends Component {
 
     this.state = {
       active: 0,
-      free: 0
+      available: 0
     }
   }
 
@@ -39,9 +39,9 @@ class ServerStatus extends Component {
     return RestAPI.microservices.list()
       .then(containers => {
         const active = containers.filter(c => c.State === 'running').length
-        const free = containers.filter(c => c.State !== 'running').length
+        const available = 5 - active
 
-        this.setState({ active, free })
+        this.setState({ active, available })
         this.$chart.update(active / 5 * 100)
       })
   }
@@ -58,7 +58,7 @@ class ServerStatus extends Component {
           <div className="chart" ref='chart' />
           <ul className='legend'>
             <li className="active"><span>Active ({this.state.active})</span></li>
-            <li><span>Free ({this.state.free})</span></li>
+            <li><span>Free ({this.state.available})</span></li>
           </ul>
         </div>
       </div>

@@ -1,58 +1,47 @@
-import fetch from 'isomorphic-fetch'
-import * as config from '../config'
+import request from 'superagent'
 
-const username = 'weblab'
-const AUTH = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndlYmxhYiIsInBsYW4iOnsibmFtZSI6IkZyZWUiLCJtYXhJbnN0YW5jZXMiOjV9LCJhY3RpdmUiOnRydWUsImlhdCI6MTQ4MzUyMDE0OSwiZXhwIjoxNDg0MTI0OTQ5LCJpc3MiOiJ3ZWJsYWItYXV0aGVudGljYXRvciJ9.Mwwyo513fSnObY0adqZDE05heXxDUewzurxmLGyDnOE';
-
-/**
- * Performs a GET request to Weblab API.
- *
- * @param {String} url - The endpoint route path
- * @returns {Promise}
- */
-const get = url => {
-  url = url.indexOf('?') !== -1
-    ? url + '&'
-    : url + '?'
-  url = url + 'access_token=' + AUTH
-
-  return fetch(`${config.API_URL}/v1${url}`, {
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
-
-/**
- * Performs a GET request to Weblab API and parses response as JSON.
- *
- * @param {String} url - The endpoint route path
- * @returns {Promise}
- */
-const getJSON = url => get(url).then(response => response.json())
-
-/**
- * Performs a GET request to Weblab API and parses response as TEXT.
- *
- * @param {String} url - The endpoint route path
- * @returns {Promise}
- */
-const getText = url => get(url).then(response => response.text())
+import { API_URL } from '../config'
+import auth from '../auth'
 
 /**
  * Containers related APIs
  */
 const containers = {
-  stats: containerId => getJSON(`/users/${username}/containers/${containerId}/stats`),
-  logs: containerId => getText(`/users/${username}/containers/${containerId}/logs?stdout=1`)
+  stats: containerId => request
+    .get(`${API_URL}/v1/users/${auth.getUsername()}/containers/${containerId}/stats`)
+    .query({ access_token: auth.getAccessToken() })
+    .then(response => response)
+    .then(data => JSON.parse(data.text)),
+
+  logs: containerId => request
+    .get(`${API_URL}/v1/users/${auth.getUsername()}/containers/${containerId}/logs`)
+    .query({ access_token: auth.getAccessToken() })
+    .query({ stdout: 1, stderr: 1 })
+    .then(response => response.text),
 }
 
 /**
  * Microservices related APIs
  */
 const microservices = {
-  list: () => getJSON(`/users/${username}/microservices`)
+  list: () => request
+    .get(`${API_URL}/v1/users/${auth.getUsername()}/microservices`)
+    .query({ access_token: auth.getAccessToken() })
+    .then(response => response.body),
+}
+
+/**
+ * Users related APIs
+ */
+const users = {
+  login: (payload) => request
+    .post(`${API_URL}/v1/account/login`)
+    .send(payload)
+    .then(response => response.body)
 }
 
 export default {
   microservices,
-  containers
+  containers,
+  users
 }

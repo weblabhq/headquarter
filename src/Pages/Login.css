@@ -1,0 +1,71 @@
+.Login {
+  padding: 15vh 0;
+  text-align: center;
+  color: #666;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.Login-container {
+  text-align: left;
+}
+
+.Login-logo {
+  display: block;
+  font-family: 'Allerta Stencil', sans-serif;
+  height: 48px;
+  color: #24262d;
+  text-align: center;
+  font-size: 2rem;
+  text-decoration: none;
+  margin-bottom: 50px;
+}
+
+.Login .left {
+  padding-right: 20px;
+  border-right: 1px solid #E6EDF4;
+}
+
+.Login .right {
+  padding-left: 20px;
+}
+
+.Login h3 {
+  color: #1C2023;
+}
+
+.Login .register-text {
+  text-align: center;
+}
+
+.Login .register {
+  margin-top: 20px;
+  border-top: 1px solid #E6EDF4;
+}
+
+.Login .social {
+  height: 36px;
+  border-radius: 2px;
+  color: #fff;
+  width: 100%;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+  margin-bottom: 5px;
+}
+
+.Login .social i {
+  margin-right: 5px;
+}
+
+.Login .social.github {
+  background: #333;
+}
+
+.Login .social.bitbucket {
+  background: #0C7CD5;
+}
+
+.Login .social.gitlab {
+  background: #694EB8;
+}

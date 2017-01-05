@@ -15,6 +15,11 @@ body {
   background: #F7F9FC;
 }
 
+a {
+  text-decoration: none;
+  color: #0c7cd5;
+}
+
 table,
 tbody {
   display: table;
@@ -154,4 +159,56 @@ tbody {
   .w-12 {
     width: 100%;
   }
+}
+
+.wl-label {
+  display: block;
+  width: 200px;
+  font-size: 0.8rem;
+  color: #7E899B;
+  margin-bottom: 3px;
+  font-weight: 300;
+}
+
+.wl-input {
+  display: block;
+  width: 100%;
+  background: #FFF;
+  border: 1px solid #E6EDF4;
+  color: #7E899B;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  outline: 0;
+}
+
+.wl-input:focus {
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 0 3px rgba(0,126,255,.1);
+  border: 1px solid #0c7cd5;
+}
+
+.wl-input[type="submit"] {
+  width: 80px;
+  background-color: #0c7cd5;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.wl-input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px white inset;
+}
+.wl-input:-webkit-autofill:focus {
+  box-shadow: 0 0 0px 1000px white inset, inset 0 1px 1px rgba(0,0,0,.075), 0 0 0 3px rgba(0,126,255,.1);
+}
+
+.wl-button-secondary {
+  display: inline-block;
+  padding: 10px 15px;
+}
+
+.wl-button-secondary:hover {
+  text-decoration: underline;
 }
