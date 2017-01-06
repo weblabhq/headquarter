@@ -1,8 +1,7 @@
 .Sidebar {
   width: 48px;
   height: 100%;
-  background-color: pink;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   overflow-x: auto;

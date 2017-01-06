@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import './Dashboard.css'
+
 import Sidebar from '../Components/Sidebar/Sidebar'
 import Navbar from '../Components/Navbar/Navbar'
 import MainError from '../Components/Errors/MainError'
@@ -19,7 +21,7 @@ class Dashboard extends Component {
 
         <Sidebar />
 
-        <div className="App-content">
+        <div className="Dashboard-content">
           <div className="w-9">
             <Containers />
           </div>

@@ -1,7 +1,10 @@
+.Dashboard {
+  background: #F7F9FC;
+  min-height: 100vh;
+}
+
 .Dashboard-content {
   margin-left: 48px;
-  margin-top: 48px;
-  padding: 5px;
-  color: #666;
-  background: #F7F9FC;
+  padding: 53px 0px 5px 5px;
+  color: #222;
 }

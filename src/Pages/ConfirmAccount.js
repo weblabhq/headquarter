@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
 import './ConfirmAccount.css'
-
-import Footer from './Footer'
 
 class ConfirmAccount extends Component {
   render () {
