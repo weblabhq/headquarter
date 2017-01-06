@@ -37,6 +37,11 @@ const users = {
   login: (payload) => request
     .post(`${API_URL}/v1/account/login`)
     .send(payload)
+    .then(response => response.body),
+
+  register: (payload) => request
+    .post(`${API_URL}/v1/account/register`)
+    .send(payload)
     .then(response => response.body)
 }
 

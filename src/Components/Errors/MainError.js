@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import './MainError.css'
 
-import { close } from '../../Actions/login.actions'
+import { close } from '../../Actions/user.actions'
 
 class MainError extends Component {
   render () {

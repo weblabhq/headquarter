@@ -62,7 +62,7 @@
   transition: opacity .4s ease,left .4s ease;
   opacity: 0;
   pointer-events: none;
-  box-shadow: 0 4px 10px -6px #000
+  box-shadow: 0 4px 10px -6px #000;
 }
 
 .Sidebar-tooltip:before {

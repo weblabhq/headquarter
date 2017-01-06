@@ -1,0 +1,22 @@
+.Footer {
+  margin-top: 80px;
+  padding: 20px;
+  border-top: 1px solid #E6EDF4;
+  text-align: left;
+}
+
+.Footer a {
+  margin-right: 20px;
+  font-size: 0.8rem;
+  color: #7d8998;
+}
+
+.Footer a:hover {
+  color: #222;
+}
+
+.Footer span {
+  float: right;
+  font-size: 0.7rem;
+  color: #7d8998;
+}

@@ -1,9 +1,14 @@
 .Login {
-  padding: 15vh 0;
+  padding: 15vh 20px;
   text-align: center;
-  color: #666;
   min-height: 100vh;
   background-color: #fff;
+}
+
+@media screen and (min-width: 769px) {
+  .Login {
+    padding: 15vh 0;
+  }
 }
 
 .Login-container {
@@ -21,13 +26,15 @@
   margin-bottom: 50px;
 }
 
-.Login .left {
-  padding-right: 20px;
-  border-right: 1px solid #E6EDF4;
-}
+@media screen and (min-width: 769px) {
+  .Login .left {
+    padding-right: 20px;
+    border-right: 1px solid #E6EDF4;
+  }
 
-.Login .right {
-  padding-left: 20px;
+  .Login .right {
+    padding-left: 20px;
+  }
 }
 
 .Login h3 {
@@ -60,6 +67,7 @@
 
 .Login .social.github {
   background: #333;
+  margin-top: 37px;
 }
 
 .Login .social.bitbucket {

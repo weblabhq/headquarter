@@ -1,0 +1,44 @@
+.ConfirmAccount {
+  padding: 15vh 20px;
+  text-align: center;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+@media screen and (min-width: 769px) {
+  .ConfirmAccount {
+    padding: 15vh 0;
+  }
+}
+
+.ConfirmAccount-logo {
+  display: block;
+  font-family: 'Allerta Stencil', sans-serif;
+  color: #24262d;
+  text-align: center;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 10px 0;
+  margin-bottom: 50px;
+}
+
+.ConfirmAccount h1,
+.ConfirmAccount h2,
+.ConfirmAccount h3,
+.ConfirmAccount h4 {
+  color: #1C2023;
+}
+
+.ConfirmAccount p {
+  margin-top: 50px;
+  color: #1C2023;
+  margin-bottom: 30px;
+}
+
+.ConfirmAccount .request {
+  background-color: #0c7cd5;
+  color: #fff;
+  border-radius: 2px;
+  padding: 10px 20px;
+  margin-top: 10px;
+}

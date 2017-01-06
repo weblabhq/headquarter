@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+import { Link } from 'react-router'
 
 import './Login.css'
 
-import { login, success, error } from '../Actions/login.actions'
+import { login, register, error } from '../Actions/user.actions'
 import MainError from '../Components/Errors/MainError'
 
 class Login extends Component {
@@ -12,7 +12,8 @@ class Login extends Component {
     super(props)
 
     this.state = {
-      showRegister: false
+      showRegister: false,
+      username: ''
     }
   }
 
@@ -25,10 +26,8 @@ class Login extends Component {
     if (!email) return this.props.error(new Error('Email can not be empty'))
     if (!password) return this.props.error(new Error('Password can not be empty'))
 
-    this.props
-      .login(email, password)
-      // Redirect to /
-      .then(() => this.props.push('/'))
+    // Make login request
+    this.props.login(email, password)
   }
 
   onRegister (e) {
@@ -37,12 +36,16 @@ class Login extends Component {
     const name = this.refs.name.value
     const email = this.refs.email.value
     const password = this.refs.password.value
+    const username = this.refs.username.value
     const confirmPassword = this.refs.confirmPassword.value
 
     if (!name) return this.props.error(new Error('Name can not be empty'))
     if (!email) return this.props.error(new Error('Email can not be empty'))
+    if (!username) return this.props.error(new Error('Username can not be empty'))
     if (!password) return this.props.error(new Error('Password can not be empty'))
     if (password !== confirmPassword) return this.props.error(new Error('Password and Password Confirmation do not match'))
+
+    this.props.register(email, username, password)
   }
 
   onShowRegister (e) {
@@ -53,6 +56,16 @@ class Login extends Component {
   onCloseRegister (e) {
     e.preventDefault()
     this.setState({ showRegister: false })
+  }
+
+  generateUsername (value) {
+    return (value || '').split('@')[0].replace(/\W/, '')
+  }
+
+  onEmailChange () {
+    this.setState({
+      username: this.generateUsername(this.refs.email.value)
+    })
   }
 
   render () {
@@ -67,8 +80,8 @@ class Login extends Component {
         <div>
           <h3>Sign up with your email address</h3>
 
-          <form onSubmit={(e) => this.onRegister(e)}>
-            <label className="wl-label" htmlFor='email'>Name</label>
+          <form onSubmit={(e) => this.onRegister(e)} autoComplete="off">
+            <label className="wl-label" htmlFor='name'>Name</label>
             <input
               className="wl-input"
               type='text'
@@ -84,7 +97,18 @@ class Login extends Component {
               placeholder=''
               title='Please enter your email'
               required='' defaultValue=''
+              autoComplete="off"
+              onChange={(e) => this.onEmailChange(e)}
               ref="email" />
+
+            <label className="wl-label" htmlFor='username'>Username</label>
+            <input
+              className="wl-input"
+              type='text'
+              placeholder=''
+              title='Please enter your email'
+              required='' value={this.state.username}
+              ref="username" />
 
             <label className="wl-label" htmlFor='email'>Password</label>
             <input
@@ -93,6 +117,7 @@ class Login extends Component {
               placeholder=''
               title='Please enter your password'
               required='' defaultValue=''
+              autoComplete="off"
               ref="password" />
 
             <label className="wl-label" htmlFor='email'>Password Confirmation</label>
@@ -121,7 +146,7 @@ class Login extends Component {
         <MainError />
 
         <div className="Login-container w-6">
-          <div className="Login-logo">WEBLAB</div>
+          <Link to="/" className="Login-logo">WEBLAB</Link>
 
           <div className="w-6 left">
             <h3>Sign in with your email address</h3>
@@ -152,7 +177,7 @@ class Login extends Component {
           </div>
 
           <div className="w-6 right">
-            <h3>Sign in with GitHub, Bitbucket, or GitLab</h3>
+            <h3>Sign in with your favorite provider</h3>
 
             <div>
               <a className="social github">
@@ -187,7 +212,6 @@ class Login extends Component {
 
 export default connect(null, {
   login,
-  success,
-  error,
-  push
+  register,
+  error
 })(Login)
