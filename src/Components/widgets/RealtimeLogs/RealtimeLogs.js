@@ -1,40 +1,34 @@
 import React, { Component } from 'react'
-
-import RestAPI from '../../../lib/api/rest'
+import { connect } from 'react-redux'
+import _keys from 'lodash.keys'
 
 import './RealtimeLogs.css'
+
+import { fetchContainerLogs } from '../../../Actions/logs.actions'
 
 class RealtimeLogs extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      logs: '',
       container: ''
     }
   }
 
-  componentDidMount () {
-    this.start()
-  }
-
   start () {
-    if (this.interval) clearInterval(this.interval)
-    this.interval = setInterval(() => this.fetch(), 30000)
-    this.fetch()
+    this.stop()
+    this.interval = setInterval(() => this.start(), 30000)
+    if (this.state.container) {
+      this.props.fetchContainerLogs(this.state.container)
+    }
   }
 
-  fetch () {
-    if (!this.state.container) return;
-
-    return RestAPI
-      .containers
-      .logs(this.state.container)
-      .then(logs => this.setState({ logs }))
+  stop () {
+    if (this.interval) clearInterval(this.interval)
   }
 
   componentWillUnmount () {
-    clearInterval(this.interval)
+    this.stop()
   }
 
   onChange (event) {
@@ -46,19 +40,31 @@ class RealtimeLogs extends Component {
   }
 
   render () {
+    const { containers, logs } = this.props;
+
+    const $logs = logs[this.state.container]
+      ? logs[this.state.container]
+      : ''
+    
+    const $options = [<option key="0" value="">Select container</option>]
+      .concat(Object.keys(containers).map(k => {
+        return <option key={containers[k].Id} value={containers[k].Id}>{containers[k].Id}</option>;
+      }));
+    const $service = containers[this.state.container]
+      ? <span className="dimmed">- {containers[this.state.container].Microservice}</span>
+      : null
+
     return (
       <div className="RealtimeLogs widget">
         <select className="containers" onChange={(e) => this.onChange(e)} value={this.state.container}>
-          <option value="">Select</option>
-          <option value="596b875aba0b">recent-activity-1.0.0</option>
-          <option value="1c260895c73e">weblab-fb-bot-1.0.0</option>
+          {$options}
         </select>
 
-        <h1>Logs</h1>
+        <h1>Logs {$service}</h1>
 
         <div className="body">
           <pre className="scrollable" ref="container">
-            {this.state.logs}
+            {$logs}
           </pre>
         </div>
       </div>
@@ -66,4 +72,13 @@ class RealtimeLogs extends Component {
   }
 }
 
-export default RealtimeLogs
+const mapStateToProps = (state, props) => {
+  return {
+    containers: state.containers,
+    logs: state.logs
+  }
+}
+
+export default connect(mapStateToProps, {
+  fetchContainerLogs
+})(RealtimeLogs)

@@ -12,3 +12,9 @@
 .RealtimeLogs .containers {
   float: right;
 }
+
+.RealtimeLogs h1 .dimmed {
+  color: #999;
+  font-weight: 300;
+  text-transform: initial;
+}

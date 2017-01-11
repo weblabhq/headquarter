@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import RestAPI from '../../../lib/api/rest'
-import * as utils from './utils'
+import { connect } from 'react-redux'
+import _keys from 'lodash.keys'
+import _difference from 'lodash.difference'
+
+import {
+  containersFetch,
+  containerStatsFetch
+} from '../../../Actions/container.actions'
+import Container from './Container'
 
 import './Containers.css'
 
 class Containers extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      containers: [],
-      stats: {}
-    }
-  }
-
   componentDidMount () {
     this.interval = setInterval(() => this.fetch(), 30000)
     this.fetch()
@@ -24,87 +22,32 @@ class Containers extends Component {
   }
 
   fetch () {
-    return RestAPI.microservices.list()
-      .then(containers => {
-        this.setState({ containers })
-
-        containers.forEach((c) => {
-          RestAPI.containers.stats(c.Id.slice(0, 12)).then(s => {
-            console.log(s)
-
-            const stat = {
-              cpu: utils.cpuUsage(s),
-              mem: (utils.memUsage(s) / utils.memLimit(s)) || 0.0,
-              memBytes: utils.memUsage(s)
-            }
-
-            this.setState({
-              stats: Object.assign({}, this.state.stats, { [c.Id]: stat })
-            })
-          })
-        })
-      })
+    return this.props.containersFetch(this.props.username);
   }
 
-  showTooltip (event, tooltip, text) {
-    const el = this.refs[tooltip]
+  componentWillUpdate (nextProps) {
+    const now = _keys(this.props.containers)
+    const next = _keys(nextProps.containers)
 
-    el.style.top = event.clientY - 45 + 'px'
-    el.style.left = event.clientX - el.getBoundingClientRect().width / 2 + 'px'
-    el.innerHTML = text
-    el.classList.add('show')
+    this.fetchStats(_difference(next, now))
   }
 
-  hideTooltip (e, tooltip) {
-    const el = this.refs[tooltip]
+  fetchStats (containerIds) {
+    containerIds.forEach(id => this.props.containerStatsFetch(id))
+  }
 
-    el.classList.remove('show')
+  getContainerListElements (containers, stats) {
+    if (!_keys(containers).length) return null
+
+    return Object.keys(containers).map((k) => {
+      const c = containers[k]
+      return <Container key={c.Id} container={c} stats={stats[c.Id]} />
+    })
   }
 
   render () {
-    const $containers = this.state.containers.map((c) => {
-      const cpu = this.state.stats[c.Id]
-        ? this.state.stats[c.Id].cpu
-        : 0
-
-      const mem = this.state.stats[c.Id]
-        ? this.state.stats[c.Id].mem
-        : 0
-
-      const memBytes = this.state.stats[c.Id]
-        ? this.state.stats[c.Id].memBytes
-        : 0
-
-      return (<tr key={c.Id} className="container w-12">
-        <td className="left w-3">
-          <div>{c.Microservice}</div>
-          <div className="dimmed">{c.Id.slice(0,12)}</div>
-        </td>
-        <td className="center w-7" ref="center">
-          <div className="bar blue"
-            onMouseOver={(e) => this.showTooltip(e, `tooltip-${c.Id}`, `CPU - ${cpu}%`)}
-            onMouseOut={(e) => this.hideTooltip(e, `tooltip-${c.Id}`)}>
-            <div className="fill" style={{
-              width: ((1 - cpu) * 100) + '%'
-            }} />
-          </div>
-
-          <div className="bar dark-blue"
-            onMouseOver={(e) => this.showTooltip(e, `tooltip-${c.Id}`, `RSS - ${utils.MB(memBytes)}`)}
-            onMouseOut={(e) => this.hideTooltip(e, `tooltip-${c.Id}`)}>
-            <div className="fill" style={{
-              width: ((1 - mem) * 100) + '%'
-            }} />
-          </div>
-
-          <div ref={`tooltip-${c.Id}`} className='Containers-tooltip' />
-        </td>
-        <td className="right w-2">
-          <div>{c.State}</div>
-          <div className="dimmed">{c.Status}</div>
-        </td>
-      </tr>)
-    })
+    const { containers, stats } = this.props;
+    const $containers = this.getContainerListElements(containers, stats)
 
     return (
       <div className="Containers widget">
@@ -132,4 +75,17 @@ class Containers extends Component {
   }
 }
 
-export default Containers
+const mapStateToProps = (state, props) => {
+  return {
+    containers: state.containers,
+    username: state.user.username,
+    stats: state.stats,
+  }
+}
+
+export default connect(
+  mapStateToProps, {
+    containersFetch,
+    containerStatsFetch
+  }
+)(Containers)

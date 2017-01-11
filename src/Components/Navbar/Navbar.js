@@ -62,6 +62,12 @@ class Sidebar extends Component {
 
             {usermenu}
           </li>
+
+          <li>
+            <Link to="/logout" onClick={(e) => this.onLogout(e)}>
+              <i className="fa fa-power-off"></i>
+            </Link>
+          </li>
         </ul>
       </div>
     )

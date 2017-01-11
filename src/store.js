@@ -13,7 +13,10 @@ const INITIAL_STATE = {
     username: auth.getUsername(),
     accessToken: auth.getAccessToken(),
   },
-  errors: []
+  errors: [],
+  containers: {},
+  logs: {},
+  stats: {}
 }
 
 // Create the store

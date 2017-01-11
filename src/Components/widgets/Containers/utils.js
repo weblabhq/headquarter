@@ -1,5 +1,5 @@
 export function cpuUsage (data) {
-  if (!data) return 0.0
+  if (!data || !data.cpu_stats) return 0.0
 
   let cpuPercent = 0.0
   // calculate the change for the cpu usage of the container in between readings
@@ -19,19 +19,19 @@ export function MB (bytes) {
 }
 
 export function memUsage (data) {
-  if (!data) return 0.0
+  if (!data || !data.memory_stats) return 0.0
 
   return data.memory_stats.usage
 }
 
 export function memMaxUsage (data) {
-  if (!data) return 0.0
+  if (!data || !data.memory_stats) return 0.0
 
   return data.memory_stats.max_usage
 }
 
 export function memLimit (data) {
-  if (!data) return 0.1
+  if (!data || !data.memory_stats) return 0.1
 
   return data.memory_stats.limit
 }

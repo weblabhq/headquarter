@@ -27,7 +27,7 @@ const microservices = {
   list: () => request
     .get(`${API_URL}/v1/users/${auth.getUsername()}/microservices`)
     .query({ access_token: auth.getAccessToken() })
-    .then(response => response.body),
+    .then(response => response.body.map(c => Object.assign(c, { Id: c.Id.slice(0, 12) }))),
 }
 
 /**

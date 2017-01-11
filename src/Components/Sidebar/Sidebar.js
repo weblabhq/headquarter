@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import './Sidebar.css';
 
@@ -27,39 +28,39 @@ class Sidebar extends Component {
         <nav className="Sidebar">
           <ul className="Sidebar-nav">
             <li className="active">
-              <a href="/"
+              <Link to="/"
                 onMouseOver={(e) => this._showTooltip(e, 'Dashboard')}
                 onMouseMove={this._moveTooltip}
                 onMouseOut={this._hideTooltip}>
                 <i className="fa fa-laptop"></i>
-              </a>
+              </Link>
             </li>
 
             <li className="">
-              <a href="/monitoring"
+              <Link to="/monitoring"
                 onMouseOver={(e) => this._showTooltip(e, 'Monitoring')}
                 onMouseMove={this._moveTooltip}
                 onMouseOut={this._hideTooltip}>
                 <i className="fa fa-heartbeat"></i>
-              </a>
+              </Link>
             </li>
 
             <li className="">
-              <a href="/microservices"
+              <Link to="/microservices"
                 onMouseOver={(e) => this._showTooltip(e, 'Microservices')}
                 onMouseMove={this._moveTooltip}
                 onMouseOut={this._hideTooltip}>
                 <i className="fa fa-tasks"></i>
-              </a>
+              </Link>
             </li>
 
             <li className="">
-              <a href="/events"
+              <Link href="/events"
                 onMouseOver={(e) => this._showTooltip(e, 'Events')}
                 onMouseMove={this._moveTooltip}
                 onMouseOut={this._hideTooltip}>
                 <i className="fa fa-bolt"></i>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
