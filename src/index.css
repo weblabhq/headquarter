@@ -160,6 +160,10 @@ tbody {
   }
 }
 
+.fh {
+  height: 100%;
+}
+
 .wl-label {
   display: block;
   width: 200px;

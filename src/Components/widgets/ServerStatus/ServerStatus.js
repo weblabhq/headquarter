@@ -32,7 +32,7 @@ class ServerStatus extends Component {
         <h1>Containers in use</h1>
 
         <div className="body">
-          <span className='ServerStatus-value'>{percent}%</span>
+          <div className='ServerStatus-value'>{percent}%</div>
           <div className="chart" ref='chart' />
           <ul className='legend'>
             <li className="active"><span>Active ({active})</span></li>

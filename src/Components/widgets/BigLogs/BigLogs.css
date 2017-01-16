@@ -1,0 +1,95 @@
+.BigLogs .body {
+  height: 100%;
+}
+
+.BigLogs .scrollable {
+  overflow: auto;
+  height: 100%;
+  padding: 0 0 0 20px;
+}
+
+.BigLogs .scrollable pre {
+  font-family: monospace;
+  font-size: .7rem;
+  color: #222;
+  width: 100%;
+  word-break: break-all;
+  word-wrap: break-word;
+  padding: 0;
+  margin: 0;
+}
+
+.BigLogs .title {
+  font-weight: 300;
+  font-size: 0.8rem;
+  text-align: center;
+  margin: -10px 0 10px 0;
+  height: 18px;
+  color: #7E899B;
+}
+
+.BigLogs .menu {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.BigLogs .menu li {
+  padding: 5px 10px 5px 5px;
+  margin: 0;
+  cursor: pointer;
+  border-right: 1px solid #E6EDF4;
+  width: 100%;
+  display: inline-block;
+  margin-right: -1px;
+  font-size: 0.75rem;
+  color: #7E899B;
+}
+
+.BigLogs .menu li::before {
+  content: " ";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  margin-left: -10px;
+  margin-top: 7px;
+  border-radius: 50px;
+}
+
+.BigLogs .menu li.green::before {
+  background: #8BC34A;
+}
+
+.BigLogs .menu li.gray::before {
+  background: #9E9E9E;
+}
+
+.BigLogs .menu li:hover {
+  color: #222;
+}
+
+.BigLogs .menu li .id {
+  width: 130px;
+}
+
+.BigLogs .menu li .name {
+  width: 130px;
+  font-weight: 700;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.BigLogs .menu li.active {
+  border-right: 1px solid #2196f3;
+  color: #222;
+}
+
+.BigLogs .none {
+  text-align: center;
+  color: #7e899b;
+  margin-top: 20vh;
+}

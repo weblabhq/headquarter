@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import './Dashboard.css'
+import './Pages.css'
 
 import Sidebar from '../Components/Sidebar/Sidebar'
 import Navbar from '../Components/Navbar/Navbar'
@@ -11,17 +11,23 @@ import RealtimeLogs from '../Components/widgets/RealtimeLogs/RealtimeLogs'
 import Containers from '../Components/widgets/Containers/Containers'
 import ContainerEvents from '../Components/widgets/ContainerEvents/ContainerEvents'
 
+import { setPage, PAGES } from '../Actions/page.actions'
+
 class Dashboard extends Component {
+  componentDidMount () {
+    this.props.setPage(PAGES.DASHBOARD)
+  }
+
   render() {
     return (
-      <div className="Dashboard">
+      <div className="Page">
         <MainError />
 
         <Navbar />
 
         <Sidebar />
 
-        <div className="Dashboard-content">
+        <div className="Page-content">
           <div className="w-9">
             <Containers />
           </div>
@@ -50,5 +56,7 @@ const mapStateToProps = (state, props) => {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps, {
+    setPage,
+  }
 )(Dashboard)

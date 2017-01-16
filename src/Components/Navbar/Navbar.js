@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
+import cx from 'classnames'
 
 import './Navbar.css';
 
@@ -11,16 +12,23 @@ class Sidebar extends Component {
     super(props)
 
     this.state = {
-      showUserMenu: false
+      showUserMenu: false,
+      notifications: false,
     }
   }
 
-  showUserMenu (e) {
-    this.setState({ showUserMenu: true })
+  toggleUserMenu (e) {
+    this.setState({
+      showUserMenu: !this.state.showUserMenu,
+      notifications: false
+    })
   }
 
-  hideUserMenu (e) {
-    this.setState({ showUserMenu: false })
+  toggleNotifications (e) {
+    this.setState({
+      showUserMenu: false,
+      notifications: !this.state.notifications
+    })
   }
 
   onLogout (e) {
@@ -28,6 +36,8 @@ class Sidebar extends Component {
   }
 
   render() {
+    const { page } = this.props
+
     const usermenu = this.state.showUserMenu
       ? (
         <ul className="dropdown-menu">
@@ -44,31 +54,24 @@ class Sidebar extends Component {
       <div className="Navbar">
         <a className="Navbar-logo" href="/">W</a>
 
-        <span className="Navbar-title">Dashboard</span>
+        <span className="Navbar-title">{page}</span>
 
         <ul className="Navbar-right">
-          <li>
+          <li onClick={(e) => this.toggleNotifications(e)}>
             <i className="fa fa-bell-o"></i>
           </li>
 
-          <li>
-            <i className="fa fa-cog"></i>
-          </li>
-
-          <li className="usermenu"
-            onMouseLeave={(e) => this.hideUserMenu(e)}
-            onMouseOver={(e) => this.showUserMenu(e)}>
+          <li className="usermenu" onClick={(e) => this.toggleUserMenu(e)}>
             <i className="fa fa-user-circle-o"></i>
-
             {usermenu}
           </li>
-
-          <li>
-            <Link to="/logout" onClick={(e) => this.onLogout(e)}>
-              <i className="fa fa-power-off"></i>
-            </Link>
-          </li>
         </ul>
+
+        <div className={cx('notifications', { active: this.state.notifications })}>
+          <div className="notifications-wrapper">
+            <p>You don't have any notifications right now</p>
+          </div>
+        </div>
       </div>
     )
   }
@@ -76,7 +79,8 @@ class Sidebar extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    username: state.user.username
+    username: state.user.username,
+    page: state.page.selected
   }
 }
 

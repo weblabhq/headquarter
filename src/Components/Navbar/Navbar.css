@@ -26,12 +26,14 @@
 .Navbar-title {
   width: 200px;
   left: 50%;
-  margin-left: -100px;
+  margin-left: -148px;
   position: relative;
   color: #222;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.7rem;
+  text-align: center;
+  display: inline-block;
 }
 
 .Navbar-right {
@@ -47,6 +49,7 @@
   padding: 0 5px;
   margin: 0 14px 0 0;
   list-style-type: none;
+  cursor: pointer;
 }
 
 .Navbar .down {
@@ -106,4 +109,30 @@
 
 .Navbar .dropdown-menu li i {
   padding-right: 5px;
+}
+
+.Navbar .notifications {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 200;
+  height: 100vh;
+  padding: 48px 0 0 0;
+  transform: translateX(260px);
+  transition: transform .4s ease;
+  pointer-events: none;
+  color: #7E899B;
+}
+
+.Navbar .notifications.active {
+  transform: translateX(0);
+}
+
+.Navbar .notifications-wrapper {
+  pointer-events: all;
+  background: #fff;
+  height: 100%;
+  box-shadow: -4px 0 10px -8px;
+  padding: 10px;
 }

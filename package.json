@@ -6,6 +6,7 @@
     "react-scripts": "0.8.3"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "easy-pie-chart": "2.1.7",
     "lodash.difference": "^4.5.0",
     "lodash.keys": "^4.2.0",

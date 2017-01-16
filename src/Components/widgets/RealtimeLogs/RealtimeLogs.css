@@ -1,12 +1,25 @@
+.RealtimeLogs .body {
+  height: 100%;
+}
+
 .RealtimeLogs .scrollable {
+  overflow: auto;
+  height: 100%;
+}
+
+.RealtimeLogs .scrolled {
+  box-shadow: inset 0px 5px 8px -8px;
+}
+
+.RealtimeLogs .scrollable pre {
   font-family: monospace;
   font-size: .7rem;
   color: #222;
   width: 100%;
   word-break: break-all;
   word-wrap: break-word;
-  overflow: auto;
-  height: 170px;
+  padding: 0;
+  margin: 0;
 }
 
 .RealtimeLogs .containers {
@@ -17,4 +30,8 @@
   color: #999;
   font-weight: 300;
   text-transform: initial;
+}
+
+.RealtimeLogs.full {
+  height: 100%;
 }

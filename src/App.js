@@ -11,6 +11,8 @@ import middlewares from './lib/middlewares'
 
 // Pages
 import Dashboard from './Pages/Dashboard'
+import Logs from './Pages/Logs'
+import Services from './Pages/Services'
 import NotFound from './Pages/NotFound'
 import Login from './Pages/Login'
 import Logout from './Pages/Logout'
@@ -27,6 +29,8 @@ const App = () => (
       <Route path='/login' component={Login} onEnter={middlewares.redirectHomeIfLoggedIn} />
       <Route path='/logout' component={Logout} onEnter={middlewares.requireAuth} />
       <Route path='/' component={Dashboard} onEnter={middlewares.requireAuth} />
+      <Route path='/logs' component={Logs} onEnter={middlewares.requireAuth} />
+      <Route path='/services' component={Services} onEnter={middlewares.requireAuth} />
       <Route path='*' component={NotFound} />
     </Router>
   </Provider>

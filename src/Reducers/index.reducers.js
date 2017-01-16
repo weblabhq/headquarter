@@ -6,6 +6,7 @@ import logs from './logs.reducers'
 import errors from './errors.reducers'
 import stats from './stats.reducers'
 import user from './user.reducers'
+import page from './page.reducers'
 
 export default combineReducers({
   routing: routerReducer,
@@ -14,4 +15,5 @@ export default combineReducers({
   logs,
   stats,
   user,
+  page,
 })

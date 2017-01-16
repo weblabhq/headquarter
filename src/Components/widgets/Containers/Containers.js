@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
+import cx from 'classnames'
 import _keys from 'lodash.keys'
 import _difference from 'lodash.difference'
 
@@ -50,15 +52,15 @@ class Containers extends Component {
     const $containers = this.getContainerListElements(containers, stats)
 
     return (
-      <div className="Containers widget">
+      <div className={cx('Containers widget', { fh: this.props.full })}>
         <div className="toolbar">
           <a href="#" onClick={(e) => e.preventDefault() }>
             <i className="fa fa-refresh" aria-hidden="true"></i>
           </a>
 
-          <a href="/containers" onClick={(e) => e.preventDefault() }>
+          <Link to="/services">
             <i className="fa fa-expand" aria-hidden="true"></i>
-          </a>
+          </Link>
         </div>
 
         <h1>Containers</h1>
