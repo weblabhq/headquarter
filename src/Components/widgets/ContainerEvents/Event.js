@@ -9,7 +9,7 @@ const Event = ({
       <div>{container.event}</div>
     </td>
     <td className="left w-3">
-      <div className="dimmed">{container.container}</div>
+      <div className="dimmed">{container.container.slice(0 , 12)}</div>
     </td>
     <td className="center w-3">
       {container.username}
