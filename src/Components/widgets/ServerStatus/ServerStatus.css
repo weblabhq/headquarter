@@ -4,6 +4,11 @@
 
 .ServerStatus.widget > h1 {
   width: 100%;
+  text-align: left;
+}
+
+.ServerStatus h1 span {
+  float: right;
 }
 
 .ServerStatus .body {

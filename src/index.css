@@ -12,6 +12,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   background: #FFF;
+  color: #7E899B;
 }
 
 a {
@@ -32,6 +33,10 @@ tbody {
   background-color: #FFF;
   border: 1px solid #f9f9f9;
   height: 230px;
+}
+
+.widget.type2 {
+  height: 465px;
 }
 
 .widget > h1 {

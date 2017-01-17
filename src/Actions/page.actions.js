@@ -1,5 +1,6 @@
 export const PAGES = {
   DASHBOARD: 'DASHBOARD',
+  EVENTS: 'EVENTS',
   LOGS: 'LOGS',
   SERVICES: 'SERVICES'
 }

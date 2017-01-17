@@ -29,7 +29,7 @@ class ServerStatus extends Component {
 
     return (
       <div className='ServerStatus widget'>
-        <h1>Containers in use</h1>
+        <h1>Containers in use <span>{active}/5</span></h1>
 
         <div className="body">
           <div className='ServerStatus-value'>{percent}%</div>

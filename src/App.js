@@ -12,6 +12,7 @@ import middlewares from './lib/middlewares'
 // Pages
 import Dashboard from './Pages/Dashboard'
 import Logs from './Pages/Logs'
+import Events from './Pages/Events'
 import Services from './Pages/Services'
 import NotFound from './Pages/NotFound'
 import Login from './Pages/Login'
@@ -31,6 +32,7 @@ const App = () => (
       <Route path='/' component={Dashboard} onEnter={middlewares.requireAuth} />
       <Route path='/logs' component={Logs} onEnter={middlewares.requireAuth} />
       <Route path='/services' component={Services} onEnter={middlewares.requireAuth} />
+      <Route path='/events' component={Events} onEnter={middlewares.requireAuth} />
       <Route path='*' component={NotFound} />
     </Router>
   </Provider>

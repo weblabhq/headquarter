@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux'
 
 import containers from './containers.reducers'
 import logs from './logs.reducers'
+import events from './events.reducers'
 import errors from './errors.reducers'
 import stats from './stats.reducers'
 import user from './user.reducers'
@@ -16,4 +17,5 @@ export default combineReducers({
   stats,
   user,
   page,
+  events,
 })

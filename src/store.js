@@ -16,7 +16,8 @@ const INITIAL_STATE = {
   errors: [],
   containers: {},
   logs: {},
-  stats: {}
+  stats: {},
+  events: []
 }
 
 // Create the store

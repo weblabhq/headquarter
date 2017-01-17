@@ -21,7 +21,8 @@ class Sidebar extends Component {
   _moveTooltip = (event) => {
     const el = this.refs.tooltip
     let maxTop = event.clientY < 72 ? 72 : event.clientY
-    maxTop = event.clientY > 192 ? 192 : maxTop
+    // maxTop = event.clientY > 192 ? 192 : maxTop
+    maxTop = event.clientY > 230 ? 230 : maxTop
     maxTop -= 12
     el.style.top = maxTop + 'px'
   }
@@ -69,7 +70,7 @@ class Sidebar extends Component {
               </Link>
             </li>
 
-            <li className={cx({ active: selected === 'events' })}>
+            <li className={cx({ active: selected === PAGES.EVENTS })}>
               <Link href="/events"
                 onMouseOver={(e) => this._showTooltip(e, 'Events')}
                 onMouseMove={this._moveTooltip}

@@ -1,16 +1,16 @@
 {
-  "name": "hq.weblab.io",
-  "version": "0.1.0",
+  "name": "headquarter",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.8.3"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
+    "classnames": "2.2.5",
     "easy-pie-chart": "2.1.7",
-    "lodash.difference": "^4.5.0",
-    "lodash.keys": "^4.2.0",
-    "lodash.mapvalues": "^4.6.0",
+    "lodash.difference": "4.5.0",
+    "lodash.keys": "4.2.0",
+    "lodash.mapvalues": "4.6.0",
     "moment": "2.17.1",
     "react": "15.4.1",
     "react-dom": "15.4.1",

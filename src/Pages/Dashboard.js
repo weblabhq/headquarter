@@ -10,6 +10,7 @@ import ServerStatus from '../Components/widgets/ServerStatus/ServerStatus'
 import RealtimeLogs from '../Components/widgets/RealtimeLogs/RealtimeLogs'
 import Containers from '../Components/widgets/Containers/Containers'
 import ContainerEvents from '../Components/widgets/ContainerEvents/ContainerEvents'
+import Timeline from '../Components/widgets/Timeline/Timeline'
 
 import { setPage, PAGES } from '../Actions/page.actions'
 
@@ -29,15 +30,23 @@ class Dashboard extends Component {
 
         <div className="Page-content">
           <div className="w-9">
-            <Containers />
+            <div className="w-12">
+              <Containers />
+            </div>
+
+            <div className="w-12">
+              <div className="w-4">
+                <ServerStatus size={130} />
+              </div>
+
+              <div className="w-8">
+                <ContainerEvents />
+              </div>
+            </div>
           </div>
 
           <div className="w-3">
-            <ServerStatus size={130} />
-          </div>
-
-          <div className="w-6">
-            <ContainerEvents />
+            <Timeline />
           </div>
 
           <div className="w-6">
