@@ -7,12 +7,14 @@
 
 @media screen and (min-width: 769px) {
   .Login {
-    padding: 15vh 0;
+    padding: 10vh 0;
   }
 }
 
 .Login-container {
   text-align: left;
+  width: 380px;
+  margin: 0 auto;
 }
 
 .Login-logo {
@@ -27,14 +29,6 @@
 }
 
 @media screen and (min-width: 769px) {
-  .Login .left {
-    padding-right: 20px;
-    border-right: 1px solid #E6EDF4;
-  }
-
-  .Login .right {
-    padding-left: 20px;
-  }
 }
 
 .Login h3 {
@@ -51,23 +45,25 @@
 }
 
 .Login .social {
-  height: 36px;
   border-radius: 2px;
   color: #fff;
-  width: 100%;
-  display: block;
-  text-align: center;
+  display: inline-block;
+  text-align: left;
   line-height: 36px;
+  width: 100%;
   margin-bottom: 5px;
 }
 
 .Login .social i {
-  margin-right: 5px;
+  width: 36px;
+  margin-right: 10px;
+  padding: 6px 0;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
 }
 
 .Login .social.github {
   background: #333;
-  margin-top: 37px;
 }
 
 .Login .social.bitbucket {
@@ -76,4 +72,50 @@
 
 .Login .social.gitlab {
   background: #694EB8;
+}
+
+.Login .separator {
+  border-bottom: 1px solid #E6EDF4;
+  text-align: center;
+  margin: 10px 0 30px 0;
+  height: 20px;
+}
+
+.Login .separator .text {
+  background-color: #fff;
+  position: relative;
+  top: 10px;
+  padding: 0 10px;
+  color: #1C2023;
+  line-height: 20px;
+}
+
+.Login .remember {
+  margin: 10px 0;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+.Login .wl-input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  text-transform: uppercase;
+}
+
+.Login .menu-btn {
+  font-size: 0.8rem;
+  width: 50%;
+  display: inline-block;
+  padding: 10px 20px;
+  border-bottom: 1px solid #E6EDF4;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #7E899B;
+}
+
+.Login .menu-btn.active {
+  color: #333;
+  border-bottom: 1px solid #333;
+  font-weight: 700;
 }

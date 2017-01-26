@@ -1,0 +1,49 @@
+.widget {
+  padding: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: #FFF;
+  border: 1px solid #f9f9f9;
+  height: 230px;
+}
+
+.widget.type2 {
+  height: 465px;
+}
+
+.widget > h1 {
+  font-size: 0.8rem;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  width: 70%;
+}
+
+.widget > .toolbar {
+  float: right;
+  opacity: 0;
+  transition: opacity .2s linear;
+  font-size: 0.7rem;
+}
+
+.widget:hover > .toolbar {
+  opacity: 1;
+}
+
+.widget > .toolbar a {
+  color: #ccc;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  z-index: 2;
+  margin-left: 10px;
+}
+
+.widget > .toolbar a:hover {
+  color: #222;
+}
+
+.widget > .body {
+  padding-top: 5px;
+}

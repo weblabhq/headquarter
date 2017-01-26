@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import cx from 'classnames'
 
 import './Login.css'
 
 import { login, register, error } from '../Actions/user.actions'
-import MainError from '../Components/Errors/MainError'
+import Notifier from '../Components/Notifier/Notifier'
 
 class Login extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      showRegister: false,
-      username: ''
+      showRegister: false
     }
   }
 
   onLogin (e) {
     e.preventDefault()
 
-    const email = this.refs.loginEmail.value
-    const password = this.refs.loginPassword.value
+    const email = this.refs.email.value
+    const password = this.refs.password.value
 
     if (!email) return this.props.error(new Error('Email can not be empty'))
     if (!password) return this.props.error(new Error('Password can not be empty'))
@@ -33,19 +33,13 @@ class Login extends Component {
   onRegister (e) {
     e.preventDefault()
 
-    const name = this.refs.name.value
     const email = this.refs.email.value
     const password = this.refs.password.value
-    const username = this.refs.username.value
-    const confirmPassword = this.refs.confirmPassword.value
 
-    if (!name) return this.props.error(new Error('Name can not be empty'))
     if (!email) return this.props.error(new Error('Email can not be empty'))
-    if (!username) return this.props.error(new Error('Username can not be empty'))
     if (!password) return this.props.error(new Error('Password can not be empty'))
-    if (password !== confirmPassword) return this.props.error(new Error('Password and Password Confirmation do not match'))
 
-    this.props.register(email, username, password)
+    this.props.register(email, password)
   }
 
   onShowRegister (e) {
@@ -58,142 +52,134 @@ class Login extends Component {
     this.setState({ showRegister: false })
   }
 
-  generateUsername (value) {
-    return (value || '').split('@')[0].replace(/\W/, '')
-  }
-
-  onEmailChange () {
-    this.setState({
-      username: this.generateUsername(this.refs.email.value)
-    })
-  }
-
-  render () {
-    const register = !this.state.showRegister
-      ? (
-        <div className="register-text">
-          <h4>Don't have an account yet?</h4>
-          <a href="#" onClick={(e) => this.onShowRegister(e)}>I want to sign up!</a>
-        </div>
-      )
-      : (
-        <div>
-          <h3>Sign up with your email address</h3>
-
-          <form onSubmit={(e) => this.onRegister(e)} autoComplete="off">
-            <label className="wl-label" htmlFor='name'>Name</label>
-            <input
-              className="wl-input"
-              type='text'
-              placeholder=''
-              title='Please enter your name'
-              required='' defaultValue=''
-              ref="name" />
-
-            <label className="wl-label" htmlFor='email'>Email</label>
-            <input
-              className="wl-input"
-              type='text'
-              placeholder=''
-              title='Please enter your email'
-              required='' defaultValue=''
-              autoComplete="off"
-              onChange={(e) => this.onEmailChange(e)}
-              ref="email" />
-
-            <label className="wl-label" htmlFor='username'>Username</label>
-            <input
-              className="wl-input"
-              type='text'
-              placeholder=''
-              title='Please enter your email'
-              required='' value={this.state.username}
-              ref="username" />
-
-            <label className="wl-label" htmlFor='email'>Password</label>
-            <input
-              className="wl-input"
-              type='password'
-              placeholder=''
-              title='Please enter your password'
-              required='' defaultValue=''
-              autoComplete="off"
-              ref="password" />
-
-            <label className="wl-label" htmlFor='email'>Password Confirmation</label>
-            <input
-              className="wl-input"
-              type='password'
-              placeholder=''
-              title='Please confirm your password'
-              required='' defaultValue=''
-              ref="confirmPassword" />
-            
-            <div>
-              <input className="wl-input" type="submit" value="Sign up"></input>
-              <a href="#"
-                className="wl-button-secondary"
-                onClick={(e) => this.onCloseRegister(e)}>
-                Cancel
-              </a>
-            </div>
-          </form>
-        </div>
-      )
-
+  signup () {
     return (
-      <div className="Login">
-        <MainError />
+      <div>
+        <div className="w-12">
+          <form onSubmit={(e) => this.onLogin(e)}>
+            <div className="wl-input-wrapper">
+              <span className="wl-input-icon">
+                <i className="fa fa-envelope-o" aria-hidden="true"></i>
+              </span>
 
-        <div className="Login-container w-6">
-          <Link to="/" className="Login-logo">WEBLAB</Link>
-
-          <div className="w-6 left">
-            <h3>Sign in with your email address</h3>
-
-            <form onSubmit={(e) => this.onLogin(e)}>
-              <label className="wl-label" htmlFor='email'>Email</label>
               <input
                 className="wl-input"
                 type='text'
                 placeholder=''
                 title='Please enter your email'
                 required='' defaultValue=''
-                ref="loginEmail" />
+                ref="email" />
+            </div>
 
-              <label className="wl-label" htmlFor='email'>Password</label>
+            <div className="wl-input-wrapper">
+              <span className="wl-input-icon">
+                <i className="fa fa-lock" aria-hidden="true"></i>
+              </span>
+
               <input
                 className="wl-input"
                 type='password'
                 placeholder=''
                 title='Please enter your password'
                 required='' defaultValue=''
-                ref="loginPassword" />
-              
-              <div>
-                <input className="wl-input" type="submit" value="Login"></input>
-              </div>
-            </form>
+                ref="password" />
+            </div>
+            
+            <div>
+              <input className="wl-input submit" type="submit" value="Log In"></input>
+            </div>
+
+            <div className="text-center">
+              <a href="#" className="remember">Don't remember your password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
+  register () {
+    return (
+      <div>
+        <form onSubmit={(e) => this.onRegister(e)} autoComplete="off">
+          <div className="wl-input-wrapper">
+            <span className="wl-input-icon">
+              <i className="fa fa-envelope-o" aria-hidden="true"></i>
+            </span>
+
+            <input
+              className="wl-input"
+              type='text'
+              placeholder=''
+              title='Please enter your email'
+              required='' defaultValue=''
+              ref="email" />
           </div>
 
-          <div className="w-6 right">
-            <h3>Sign in with your favorite provider</h3>
+          <div className="wl-input-wrapper">
+            <span className="wl-input-icon">
+              <i className="fa fa-lock" aria-hidden="true"></i>
+            </span>
 
-            <div>
+            <input
+              className="wl-input"
+              type='password'
+              placeholder=''
+              title='Please enter your password'
+              required='' defaultValue=''
+              ref="password" />
+          </div>
+          
+          <div>
+            <input className="wl-input" type="submit" value="Sign up"></input>
+          </div>
+        </form>
+      </div>
+    )
+  }
+
+  render () {
+    const pannel = !this.state.showRegister
+      ? this.signup()
+      : this.register()
+
+    return (
+      <div className="Login">
+        <Notifier />
+
+        <div className="Login-container">
+          <Link to="/" className="Login-logo">WEBLAB</Link>
+
+          <div className="w-12">
+            <a href="#login"
+              onClick={(e) => this.onCloseRegister(e)}
+              className={cx('menu-btn', { 'active': !this.state.showRegister })}>
+              Log in
+            </a>
+
+            <a href="#signup"
+              onClick={(e) => this.onShowRegister(e)}
+              className={cx('menu-btn', { 'active': this.state.showRegister })}>
+              Sign up
+            </a>
+          </div>
+
+          <div className="w-12">
+            <div className="w-4 p-r-5">
               <a className="social github">
                 <i className="fa fa-github" aria-hidden="true"></i>
                 GitHub
               </a>
             </div>
 
-            <div>
+            <div className="w-4 p-r-5">
               <a className="social bitbucket">
                 <i className="fa fa-bitbucket" aria-hidden="true"></i>
                 Bitbucket
               </a>
             </div>
 
-            <div>
+            <div className="w-4">
               <a className="social gitlab">
                 <i className="fa fa-gitlab" aria-hidden="true"></i>
                 GitLab
@@ -201,9 +187,11 @@ class Login extends Component {
             </div>
           </div>
 
-          <div className="register">
-            {register}
+          <div className="separator">
+            <span className="text">or</span>
           </div>
+
+          {pannel}
         </div>
       </div>
     )
