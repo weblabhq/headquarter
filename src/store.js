@@ -13,7 +13,7 @@ const INITIAL_STATE = {
     username: auth.getUsername(),
     accessToken: auth.getAccessToken(),
   },
-  errors: [],
+  notifications: [],
   containers: {},
   logs: {},
   stats: {},

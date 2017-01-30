@@ -13,12 +13,16 @@ class Login extends Component {
     super(props)
 
     this.state = {
-      showRegister: false
+      showRegister: false,
+      disableLogin: false,
+      disableRegister: false,
     }
   }
 
   onLogin (e) {
     e.preventDefault()
+
+    if (this.state.disableLogin) return;
 
     const email = this.refs.email.value
     const password = this.refs.password.value
@@ -27,11 +31,16 @@ class Login extends Component {
     if (!password) return this.props.error(new Error('Password can not be empty'))
 
     // Make login request
+    this.setState({ disableLogin: true })
     this.props.login(email, password)
+      .then(() => this.setState({ disableLogin: false }))
+      .catch(() => this.setState({ disableLogin: false }))
   }
 
   onRegister (e) {
     e.preventDefault()
+
+    if (this.state.disableRegister) return;
 
     const email = this.refs.email.value
     const password = this.refs.password.value
@@ -39,7 +48,10 @@ class Login extends Component {
     if (!email) return this.props.error(new Error('Email can not be empty'))
     if (!password) return this.props.error(new Error('Password can not be empty'))
 
+    this.setState({ disableRegister: true })
     this.props.register(email, password)
+      .then(() => this.setState({ disableRegister: false }))
+      .catch(() => this.setState({ disableRegister: false }))
   }
 
   onShowRegister (e) {
@@ -65,7 +77,7 @@ class Login extends Component {
               <input
                 className="wl-input"
                 type='text'
-                placeholder=''
+                placeholder='you@example.com'
                 title='Please enter your email'
                 required='' defaultValue=''
                 ref="email" />
@@ -79,14 +91,15 @@ class Login extends Component {
               <input
                 className="wl-input"
                 type='password'
-                placeholder=''
+                placeholder='your password'
                 title='Please enter your password'
                 required='' defaultValue=''
                 ref="password" />
             </div>
             
             <div>
-              <input className="wl-input submit" type="submit" value="Log In"></input>
+              <input className={cx('wl-input submit', { 'disabled': this.state.disableLogin })}
+                type="submit" value="Log In"></input>
             </div>
 
             <div className="text-center">
@@ -110,7 +123,7 @@ class Login extends Component {
             <input
               className="wl-input"
               type='text'
-              placeholder=''
+              placeholder='you@example.com'
               title='Please enter your email'
               required='' defaultValue=''
               ref="email" />
@@ -124,14 +137,15 @@ class Login extends Component {
             <input
               className="wl-input"
               type='password'
-              placeholder=''
+              placeholder='your password'
               title='Please enter your password'
               required='' defaultValue=''
               ref="password" />
           </div>
           
           <div>
-            <input className="wl-input" type="submit" value="Sign up"></input>
+            <input className={cx('wl-input submit', { 'disabled': this.state.disableRegister })}
+              type="submit" value="Sign up"></input>
           </div>
         </form>
       </div>

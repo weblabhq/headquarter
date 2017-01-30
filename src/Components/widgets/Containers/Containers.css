@@ -59,14 +59,12 @@
 }
 
 .Containers .bar.dark-blue {
-  background: -moz-linear-gradient(left, #3F51B5 0%, #3F51B5 50%, #e91e63 100%);
-  background: -webkit-linear-gradient(left, #3F51B5 0%, #3F51B5 50%, #e91e63 100%);
-  background: linear-gradient(to right, #3F51B5 0%, #3F51B5 50%, #e91e63 100%);
+  background: linear-gradient(to right, #2195f2 0%, #3F51B5 30%, #E91E63 80%);
 }
 
 .Containers .bar .fill {
   height: 4px;
-  background-color: #efefef;
+  background-color: #E6EDF4;
   width: 100%;
   position: absolute;
   right: 0;

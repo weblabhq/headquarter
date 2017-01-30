@@ -47,6 +47,11 @@ class Containers extends Component {
     })
   }
 
+  onRefresh (e) {
+    e.preventDefault()
+    this.fetch()
+  }
+
   render () {
     const { containers, stats } = this.props;
     const $containers = this.getContainerListElements(containers, stats)
@@ -54,7 +59,7 @@ class Containers extends Component {
     return (
       <div className={cx('Containers widget', { fh: this.props.full })}>
         <div className="toolbar">
-          <a href="#" onClick={(e) => e.preventDefault() }>
+          <a href="#" onClick={(e) => this.onRefresh(e) }>
             <i className="fa fa-refresh" aria-hidden="true"></i>
           </a>
 

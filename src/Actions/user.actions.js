@@ -57,14 +57,6 @@ export const login = (email, password) => (dispatch) => {
     })
 }
 
-export const CLOSE_ERROR = 'CLOSE_ERROR'
-export const close = (id) => {
-  return {
-    type: CLOSE_ERROR,
-    id
-  }
-}
-
 export const REGISTER_ERROR = 'REGISTER_ERROR'
 export const registerError = (error = {}) => {
   return {
@@ -73,10 +65,10 @@ export const registerError = (error = {}) => {
   }
 }
 
-export const register = (email, username, password) => (dispatch) => {
+export const register = (email, password) => (dispatch) => {
   return RestAPI
     .users
-    .register({ email, username, password })
+    .register({ email, password })
     .then(data => {
       localStorage.set('username', data.username)
       dispatch(push('/confirm'))

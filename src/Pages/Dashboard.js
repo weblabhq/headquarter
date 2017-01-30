@@ -5,12 +5,13 @@ import './Pages.css'
 
 import Sidebar from '../Components/Sidebar/Sidebar'
 import Navbar from '../Components/Navbar/Navbar'
-import MainError from '../Components/Errors/MainError'
+import Notifier from '../Components/Notifier/Notifier'
 import ServerStatus from '../Components/widgets/ServerStatus/ServerStatus'
 import RealtimeLogs from '../Components/widgets/RealtimeLogs/RealtimeLogs'
 import Containers from '../Components/widgets/Containers/Containers'
-import ContainerEvents from '../Components/widgets/ContainerEvents/ContainerEvents'
+// import ContainerEvents from '../Components/widgets/ContainerEvents/ContainerEvents'
 import Timeline from '../Components/widgets/Timeline/Timeline'
+import Deploys from '../Components/widgets/Deploys/Deploys'
 
 import { setPage, PAGES } from '../Actions/page.actions'
 
@@ -22,7 +23,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="Page">
-        <MainError />
+        <Notifier />
 
         <Navbar />
 
@@ -40,7 +41,7 @@ class Dashboard extends Component {
               </div>
 
               <div className="w-8">
-                <ContainerEvents />
+                <Deploys />
               </div>
             </div>
           </div>
@@ -49,7 +50,7 @@ class Dashboard extends Component {
             <Timeline />
           </div>
 
-          <div className="w-6">
+          <div className="w-12">
             <RealtimeLogs />
           </div>
         </div>

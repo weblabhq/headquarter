@@ -5,7 +5,7 @@ import './Pages.css'
 
 import Sidebar from '../Components/Sidebar/Sidebar'
 import Navbar from '../Components/Navbar/Navbar'
-import MainError from '../Components/Errors/MainError'
+import Notifier from '../Components/Notifier/Notifier'
 import BigLogs from '../Components/widgets/BigLogs/BigLogs'
 
 import { setPage, PAGES } from '../Actions/page.actions' 
@@ -18,7 +18,7 @@ class LogsPage extends Component {
   render() {
     return (
       <div className="Page">
-        <MainError />
+        <Notifier />
 
         <Navbar />
 

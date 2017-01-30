@@ -1,23 +1,41 @@
 .Notifier {
   position: fixed;
-  width: 100%;
   top: 10px;
-  left: 0;
+  right: 10px;
   z-index: 200;
 }
 
 .Notifier-center {
-  width: 380px;
+  width: 250px;
   margin: 0 auto;
 }
 
-.Notifier-error {
+.Notifier-notification {
   color: #FFF;
-  background: #E91E63;
+  background: #666;
   padding: 10px 30px 10px 10px;
   font-size: 0.7rem;
   position: relative;
   margin-bottom: 1px;
+  border-radius: 2px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.Notifier-notification.error {
+  background: #E91E63;
+}
+
+.Notifier-notification.info {
+  background: #2196f3;
+}
+
+.Notifier-notification.warning {
+  background: #ff9800;
+}
+
+.Notifier-notification.success {
+  background: #4caf50;
 }
 
 .Notifier-close {

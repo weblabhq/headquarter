@@ -5,7 +5,7 @@ import './Pages.css'
 
 import Sidebar from '../Components/Sidebar/Sidebar'
 import Navbar from '../Components/Navbar/Navbar'
-import MainError from '../Components/Errors/MainError'
+import Notifier from '../Components/Notifier/Notifier'
 import Containers from '../Components/widgets/Containers/Containers'
 
 import { setPage, PAGES } from '../Actions/page.actions' 
@@ -18,7 +18,7 @@ class ServicesPages extends Component {
   render() {
     return (
       <div className="Page">
-        <MainError />
+        <Notifier />
 
         <Navbar />
 
